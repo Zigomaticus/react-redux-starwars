@@ -8,34 +8,46 @@ import { API_PEOPLE } from "../../constants/api";
 import PeopleList from "../../components/PeoplePage/PeopleList/PeopleList";
 // Services
 import { getPeopleId, getPeopleImage } from "../../services/getPeopleData";
+// Hoc
+import { withErrorApi } from "../../hoc-helper/withErrorApi";
 // Css
 import styles from "./PeoplePage.module.css";
 
-const PeoplePage = () => {
+const PeoplePage = ({ setErrorApi }) => {
   const [people, setPeople] = useState(null);
 
   const getResource = async (url) => {
     const res = await getApiResource(url);
 
-    const peopleList = res.results.map(({ name, url }) => {
-      const id = getPeopleId(url);
-      const img = getPeopleImage(id);
+    if (res) {
+      const peopleList = res.results.map(({ name, url }) => {
+        const id = getPeopleId(url);
+        const img = getPeopleImage(id);
 
-      return {
-        id,
-        name,
-        img,
-      };
-    });
+        return {
+          id,
+          name,
+          img,
+        };
+      });
 
-    setPeople(peopleList);
+      setPeople(peopleList);
+      setErrorApi(false);
+    } else {
+      setErrorApi(true);
+    }
   };
 
   useEffect(() => {
     getResource(API_PEOPLE);
   }, []);
 
-  return <>{people && <PeopleList people={people} />}</>;
+  return (
+    <>
+      <h1>Navigation</h1>
+      {people && <PeopleList people={people} />}
+    </>
+  );
 };
 
-export default PeoplePage;
+export default withErrorApi(PeoplePage);
