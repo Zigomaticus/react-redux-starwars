@@ -1,18 +1,22 @@
 // Libraries
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-// Pages
-import PeoplePage from "../PeoplePage/PeoplePage";
-import HomePage from "../../containers/HomePage/HomePage";
+// Components
+import routesConfig from "../../routes/routesConfig";
+import Header from "../../components/Header/Header";
 // Css
 import styles from "./App.module.css";
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="people" element={<PeoplePage />} />
-    </Routes>
+    <div className={styles.wrapper}>
+      <Header />
+      <Routes>
+        {routesConfig.map((route, index) => (
+          <Route key={index} path={route.path} element={route.element} />
+        ))}
+      </Routes>
+    </div>
   );
 };
 
