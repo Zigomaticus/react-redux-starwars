@@ -17,9 +17,21 @@
   --font-size-header: 26px;
 
   --border-radius-small: 3px;
+
+  --transition: 0.4s;
+
+  --theme-default-header: #cccc46;
 }
 
 body {
   background-color: var(--color-dark-gray);
   font-family: var(--font-family-main);
+}
+
+.header__text {
+  line-height: 1.7;
+  font-size: var(--font-size-header);
+  box-shadow: 0 0 2px var(--color-black);
+  color: var(--theme-default-header);
+  transition: color var(--transition);
 }

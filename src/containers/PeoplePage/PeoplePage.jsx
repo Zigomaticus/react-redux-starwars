@@ -10,8 +10,6 @@ import PeopleList from "../../components/PeoplePage/PeopleList/PeopleList";
 import { getPeopleId, getPeopleImage } from "../../services/getPeopleData";
 // Hoc
 import { withErrorApi } from "../../hoc-helper/withErrorApi";
-// Css
-import styles from "./PeoplePage.module.css";
 
 const PeoplePage = ({ setErrorApi }) => {
   const [people, setPeople] = useState(null);
@@ -44,7 +42,7 @@ const PeoplePage = ({ setErrorApi }) => {
 
   return (
     <>
-      <h1>Navigation</h1>
+      <h1 className="header__text">Navigation</h1>
       {people && <PeopleList people={people} />}
     </>
   );
