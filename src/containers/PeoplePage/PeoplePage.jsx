@@ -1,18 +1,33 @@
 // Libraries
 import React, { useEffect, useState } from "react";
 // Utils
-import { getApiResource } from "../../utils/network";
+import { getApiResource, changeHTTP } from "../../utils/network";
 // Constance
 import { API_PEOPLE } from "../../constants/api";
 // Components
 import PeopleList from "../../components/PeoplePage/PeopleList/PeopleList";
+import PeopleNavigation from "../../components/PeoplePage/PeopleNavigation/PeopleNavigation";
 // Services
-import { getPeopleId, getPeopleImage } from "../../services/getPeopleData";
+import {
+  getPeopleId,
+  getPeopleImage,
+  getPeoplePageId,
+} from "../../services/getPeopleData";
+// Hooks
+import { useQueryParams } from "../../hooks/useQueryParams";
 // Hoc
 import { withErrorApi } from "../../hoc-helper/withErrorApi";
+// Css
+import styles from "./PeoplePage.module.css";
 
 const PeoplePage = ({ setErrorApi }) => {
   const [people, setPeople] = useState(null);
+  const [prevPage, setPrevPage] = useState(null);
+  const [nextPage, setNextPage] = useState(null);
+  const [coutertPage, setCoutertPage] = useState(1);
+
+  const query = useQueryParams();
+  const queryPage = query.get("page");
 
   const getResource = async (url) => {
     const res = await getApiResource(url);
@@ -30,6 +45,9 @@ const PeoplePage = ({ setErrorApi }) => {
       });
 
       setPeople(peopleList);
+      setPrevPage(changeHTTP(res.previous));
+      setNextPage(changeHTTP(res.next));
+      setCoutertPage(getPeoplePageId(url));
       setErrorApi(false);
     } else {
       setErrorApi(true);
@@ -37,12 +55,17 @@ const PeoplePage = ({ setErrorApi }) => {
   };
 
   useEffect(() => {
-    getResource(API_PEOPLE);
+    getResource(API_PEOPLE + queryPage);
   }, []);
 
   return (
     <>
-      <h1 className="header__text">Navigation</h1>
+      <PeopleNavigation
+        getResource={getResource}
+        prevPage={prevPage}
+        nextPage={nextPage}
+        coutertPage={coutertPage}
+      />
       {people && <PeopleList people={people} />}
     </>
   );
