@@ -48,9 +48,7 @@ const PeoplePage = ({ setErrorApi }) => {
       setPrevPage(changeHTTP(res.previous));
       setNextPage(changeHTTP(res.next));
       setCoutertPage(getPeoplePageId(url));
-      setErrorApi(false);
-    } else {
-      setErrorApi(true);
+      setErrorApi(!res);
     }
   };
 
