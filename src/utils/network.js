@@ -1,9 +1,7 @@
 import { HTTPS, HTTP } from "../constants/api";
 
 export const changeHTTP = (url) => {
-  const result = url ? url.replace(HTTP, HTTPS) : url;
-
-  return result;
+  return url ? url.replace(HTTP, HTTPS) : url;
 };
 
 export const getApiResource = async (url) => {

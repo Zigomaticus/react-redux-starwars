@@ -23,7 +23,7 @@ const PersonPage = ({ setErrorApi }) => {
   const { id } = useParams();
   useEffect(() => {
     (async () => {
-      const res = await getApiResource(`${API_PERSON}/${id}/`);
+      const res = await getApiResource(`${API_PERSON}/${id}`);
 
       if (res) {
         setPersonInfo([
