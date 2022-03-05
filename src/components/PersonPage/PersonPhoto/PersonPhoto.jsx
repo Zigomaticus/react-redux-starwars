@@ -1,3 +1,4 @@
+// Css
 import styles from "./PersonPhoto.module.css";
 
 const PersonPhoto = ({ personPhoto, personName }) => {

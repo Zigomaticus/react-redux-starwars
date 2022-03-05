@@ -1,3 +1,4 @@
+// Css
 import styles from "./PersonInfo.module.css";
 
 const PersonInfo = ({ personInfo }) => (
