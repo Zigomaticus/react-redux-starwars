@@ -1,23 +1,27 @@
 // Libraries
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 // Icon
 import icon from "./img/bookmark.svg";
 // Css
 import styles from "./Favorite.module.css";
 
 const Favorite = () => {
+  const [count, setCount] = useState(0);
+
+  const storeData = useSelector((state) => state.favoriteReducer);
+
+  useEffect(() => {
+    const length = Object.keys(storeData).length;
+    length.toString().length > 2 ? setCount("...") : setCount(length);
+  });
+
   return (
-    <div>
-      <Link to={"/favorites"}>
-        <span className={styles.counter}>0</span>
-        <img
-          src={icon}
-          className={styles.icon}
-          alt="favorites"
-          width={50}
-          height={50}
-        />
+    <div className={styles.container}>
+      <Link to="/favorites">
+        <span className={styles.counter}>{count}</span>
+        <img className={styles.icon} src={icon} alt="Favorites" />
       </Link>
     </div>
   );

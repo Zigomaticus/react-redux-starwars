@@ -1,10 +1,14 @@
+// Libraries
 import { omit } from "lodash";
+// Constants
 import {
   ADD_PERSON_TO_FAVORITE,
   REMOVE_PERSON_FROM_FAVORITE,
 } from "../constants/actionTypes";
+//
+import { getLocalStorage } from "../../utils/localStorage";
 
-const initialState = {};
+const initialState = getLocalStorage("store");
 
 const favoriteReducer = (state = initialState, action) => {
   switch (action.type) {
