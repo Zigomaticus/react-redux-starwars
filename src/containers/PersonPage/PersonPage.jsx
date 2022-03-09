@@ -1,6 +1,7 @@
 // Libraries
 import React, { useState, useEffect, Suspense } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 // Hoc
 import { withErrorApi } from "../../hoc-helper/withErrorApi";
 // Components
@@ -28,12 +29,16 @@ const PersonPage = ({ setErrorApi }) => {
   const [personPhoto, setPersonPhoto] = useState(null);
   const [personFilms, setPersonFilms] = useState(null);
   const [personId, setPersonId] = useState(null);
+  const [personFavorite, setPersonFavorite] = useState(false);
+
+  const storeData = useSelector((state) => state.favoriteReducer);
 
   const { id } = useParams();
   useEffect(() => {
     (async () => {
       const res = await getApiResource(`${API_PERSON}/${id}`);
 
+      storeData[id] ? setPersonFavorite(true) : setPersonFavorite(false);
       setPersonId(id);
       if (res) {
         setPersonInfo([
@@ -65,6 +70,8 @@ const PersonPage = ({ setErrorApi }) => {
             personPhoto={personPhoto}
             personName={personName}
             personId={personId}
+            personFavorite={personFavorite}
+            setPersonFavorite={setPersonFavorite}
           />
           {personInfo && <PersonInfo personInfo={personInfo} />}
           {personFilms && (
