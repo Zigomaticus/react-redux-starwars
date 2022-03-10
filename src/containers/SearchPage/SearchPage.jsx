@@ -1,9 +1,11 @@
 // Libraries
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // Utils
 import { getApiResource } from "../../utils/network";
 // Constants
 import { API_SEARCH } from "../../constants/api";
+// Components
+import SearchPageInfo from "../../components/SearchPage/SearchPageInfo/SearchPageInfo";
 // Services
 import { getPeopleId, getPeopleImage } from "../../services/getPeopleData";
 // HOC
@@ -37,11 +39,13 @@ const SearchPage = ({ setErrorApi }) => {
       });
 
       setPeople(peopleList);
-      setErrorApi(false);
-    } else {
-      setErrorApi(true);
+      setErrorApi(!res);
     }
   };
+
+  useEffect(() => {
+    getReaponse('');
+  }, []);
 
   return (
     <>
@@ -51,7 +55,9 @@ const SearchPage = ({ setErrorApi }) => {
         value={inputSearchValue}
         onChange={handleInputChange}
         placeholder="Search character..."
+        className={styles.input__search}
       />
+      <SearchPageInfo people={people} />
     </>
   );
 };
