@@ -41,8 +41,6 @@
   border-radius: var(--border-radius);
 }
 
-/* COLOR THEME */
-
 .item__light {
   text-shadow: 0 0 5px currentColor;
   color: var(--color-light);
