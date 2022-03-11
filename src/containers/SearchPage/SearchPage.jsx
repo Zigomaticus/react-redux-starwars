@@ -1,5 +1,6 @@
 // Libraries
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { debounce } from "lodash";
 // Utils
 import { getApiResource } from "../../utils/network";
 // Constants
@@ -20,10 +21,11 @@ const SearchPage = ({ setErrorApi }) => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInputSearchValue(value);
-    getReaponse(value);
+    debounceGetResponse(value);
   };
 
   const getReaponse = async (param) => {
+    console.log(param);
     const res = await getApiResource(API_SEARCH + param);
 
     if (res) {
@@ -44,8 +46,13 @@ const SearchPage = ({ setErrorApi }) => {
   };
 
   useEffect(() => {
-    getReaponse('');
+    getReaponse("");
   }, []);
+
+  const debounceGetResponse = useCallback(
+    debounce((value) => getReaponse(value), 300),
+    []
+  );
 
   return (
     <>
