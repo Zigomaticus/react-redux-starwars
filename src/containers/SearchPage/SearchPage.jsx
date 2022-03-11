@@ -7,6 +7,7 @@ import { getApiResource } from "../../utils/network";
 import { API_SEARCH } from "../../constants/api";
 // Components
 import SearchPageInfo from "../../components/SearchPage/SearchPageInfo/SearchPageInfo";
+import UiInput from "../../components/UI/UiInput/UiInput";
 // Services
 import { getPeopleId, getPeopleImage } from "../../services/getPeopleData";
 // HOC
@@ -18,8 +19,7 @@ const SearchPage = ({ setErrorApi }) => {
   const [people, setPeople] = useState([]);
   const [inputSearchValue, setInputSearchValue] = useState("");
 
-  const handleInputChange = (e) => {
-    const value = e.target.value;
+  const handleInputChange = (value) => {
     setInputSearchValue(value);
     debounceGetResponse(value);
   };
@@ -57,12 +57,11 @@ const SearchPage = ({ setErrorApi }) => {
   return (
     <>
       <h1 className="header__text">Search</h1>;
-      <input
-        type="text"
+      <UiInput
         value={inputSearchValue}
-        onChange={handleInputChange}
+        handleInputChange={handleInputChange}
         placeholder="Search character..."
-        className={styles.input__search}
+        classes={styles.input__search}
       />
       <SearchPageInfo people={people} />
     </>
