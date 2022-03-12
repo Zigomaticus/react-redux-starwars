@@ -17,8 +17,6 @@ import {
 import { useQueryParams } from "../../hooks/useQueryParams";
 // Hoc
 import { withErrorApi } from "../../hoc-helper/withErrorApi";
-// Css
-import styles from "./PeoplePage.module.css";
 
 const PeoplePage = ({ setErrorApi }) => {
   const [people, setPeople] = useState(null);

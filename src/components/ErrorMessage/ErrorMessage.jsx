@@ -1,6 +1,5 @@
 // Libraries
 import React from "react";
-
 // Css
 import styles from "./ErrorMessage.module.css";
 
