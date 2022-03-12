@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/react-redux-starwars/static/css/main.091ab8a8.css",
+    "main.js": "/react-redux-starwars/static/js/main.6301b3ed.js",
+    "static/css/890.62586cd5.chunk.css": "/react-redux-starwars/static/css/890.62586cd5.chunk.css",
+    "static/js/890.4b537c93.chunk.js": "/react-redux-starwars/static/js/890.4b537c93.chunk.js",
+    "static/media/bg.jpg": "/react-redux-starwars/static/media/bg.29b25be31315dad3ce4e.jpg",
+    "static/media/falcon.jpg": "/react-redux-starwars/static/media/falcon.c1d0a8d1869b3fbdb9ab.jpg",
+    "static/media/dark-side.jpg": "/react-redux-starwars/static/media/dark-side.e0f8cab78e4bdd7db45d.jpg",
+    "static/media/light-side.jpg": "/react-redux-starwars/static/media/light-side.eebc52171cd4ac0278ca.jpg",
+    "static/media/404.png": "/react-redux-starwars/static/media/404.1062f5e41ef989b5973a.png",
+    "static/media/bookmark.svg": "/react-redux-starwars/static/media/bookmark.0f6818bf73e9aec7254bd81df40b625c.svg",
+    "static/media/cancel.svg": "/react-redux-starwars/static/media/cancel.1d37b349388167de6bd090b5731bf27e.svg",
+    "static/media/favorite-fill.svg": "/react-redux-starwars/static/media/favorite-fill.fb2c08ecf801bc85f1af15e01c44c038.svg",
+    "static/media/favorite.svg": "/react-redux-starwars/static/media/favorite.7ca3af9307342311d12e2c8a6b247caa.svg",
+    "static/media/arrowLeft.svg": "/react-redux-starwars/static/media/arrowLeft.dbe880e9cc13989995caaab16de6d966.svg",
+    "index.html": "/react-redux-starwars/index.html",
+    "main.091ab8a8.css.map": "/react-redux-starwars/static/css/main.091ab8a8.css.map",
+    "main.6301b3ed.js.map": "/react-redux-starwars/static/js/main.6301b3ed.js.map",
+    "890.62586cd5.chunk.css.map": "/react-redux-starwars/static/css/890.62586cd5.chunk.css.map",
+    "890.4b537c93.chunk.js.map": "/react-redux-starwars/static/js/890.4b537c93.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.091ab8a8.css",
+    "static/js/main.6301b3ed.js"
+  ]
+}
